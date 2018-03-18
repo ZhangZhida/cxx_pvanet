@@ -1,11 +1,19 @@
 cmake_minimum_required(VERSION 2.8)
-project(cxx_pva_interface)
+project(cxx_pva)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #set(CMAKE_PREFIX_PATH  ${PROJECT_SOURCE_DIR}/3rdparty/opencv3.3.0) #版本冲突可能导致PVADetector类detect函数中resize报错
-set(CMAKE_PREFIX_PATH  /home/cuizhou/Downloads/opencv-3.3.0/build_cuda) #版本冲突可能导致PVADetector类detect函数中resize报错
-find_package(OpenCV 3.3.0 REQUIRED)
+#set(CMAKE_PREFIX_PATH  /home/cuizhou/Downloads/opencv-3.3.0/build_cuda) #版本冲突可能导致PVADetector类detect函数中resize报错
+
+## need the build directory of your opencv
+set(CMAKE_PREFIX_PATH  /home/zhida/Downloads/OpenCV/build) #版本冲突可能导致PVADetector类detect函数中resize报错
+
+#find_package(OpenCV 3.3.0 REQUIRED)
+
+## need to select your own opencv version
+find_package(OpenCV 3.2.0 REQUIRED)
+
 find_package(Boost REQUIRED)
 
 include_directories(
