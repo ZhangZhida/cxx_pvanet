@@ -139,17 +139,21 @@ int main(int argc, char* argv[])
      * step2: set output_dir
      */
 
-    char* inputdir = "/home/cuizhou/projects/KaiKouXiao/originaldata&&annotation/Positive/original";
+    //char* inputdir = "/home/cuizhou/projects/KaiKouXiao/originaldata&&annotation/Positive/original";
+    char* inputdir = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/Positive";
 //    char* inputdir = "/home/cuizhou/projects/KaiKouXiao/originaldata&&annotation/Positive/original";
-    string outputdir = "/home/cuizhou/projects/KaiKouXiao/test_ws/hardnegative_trainingdata_for_2ndround";
+    //string outputdir = "/home/cuizhou/projects/KaiKouXiao/test_ws/hardnegative_trainingdata_for_2ndround";
+    string outputdir = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/test_ws/hardnegative_trainingdata_for_2ndround";
 
     //PVANET Parameters
 //    string net_model = "../../models/kaikouxiaoStage1/test.caffemodel";
 //    string net_pt = "../../models/kaikouxiaoStage1/test.prototxt";
 //    std::vector<std::string> classes = { "__background__",
 //                                             "simple","triangle","wings","cross","girder","others" };
-    string s1_net_model = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
-    string s1_net_pt = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
+    //string s1_net_model = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
+    string s1_net_model = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
+    //string s1_net_pt = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
+    string s1_net_pt = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
     std::vector<std::string> s1_classes = { "__background__",
                                             "simple","triangle","wings","cross","girder","others" };
     //初始化
