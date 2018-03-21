@@ -20,8 +20,8 @@ using namespace cv;
 
 int main(int argc, char* argv[]) {
 
-    string inputPath = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/Negative/53.jpg";
-    string outputPath = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/test_ws/roi_images";
+    string inputPath = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/Negative/184.jpg";
+    string outputPath = "/home/zhida/Documents/Data/DianWangKaiKouXiao-test/test_ws";
 
     string net_model_1 = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
     string net_pt_1 = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
@@ -32,6 +32,9 @@ int main(int argc, char* argv[]) {
     string net_pt_2 =  "../../models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_svd.prototxt";
     std::vector<std::string> s2_classes = { "__background__",
                                             "type_none","type_chaxiao","type_head"};
+
+    
+    // ### ---- first stage ---- ###
 
 
     // ## initialize
@@ -44,8 +47,6 @@ int main(int argc, char* argv[]) {
     // ## image
     string img_path = inputPath;
     cv::Mat src_image = cv::imread(img_path);
-
-    // ### first stage
 
     // ## detect
     std::vector<Detection> dets = detector_1.detect(src_image);
@@ -64,7 +65,7 @@ int main(int argc, char* argv[]) {
         matpool.push_back(detMat);
     }
 
-    vector<string> roi_filepaths = writeMatPool(matpool, outputPath);
+    vector<string> roi_filepaths = writeMatPool(matpool, outputPath+"/roi_images");
 
     for(int i=0; i<roi_filepaths.size(); i++) {
 
@@ -72,8 +73,52 @@ int main(int argc, char* argv[]) {
         Mat roi_src_image = imread(roi_filepath);
 
         string roi_window_name = "roi" + i;
+        //cv::namedWindow(roi_window_name, CV_WINDOW_AUTOSIZE);
+        //cv::imshow(roi_window_name, roi_src_image);
+    }
+
+
+    // ### ---- second stage ---- ###
+    
+    PVADetector detector_2;
+    detector_2.init(net_pt_2, net_model_2, s2_classes);
+
+    detector_2.setThresh(0.7, 0.3);
+    detector_2.setComputeMode("gpu", 0);
+
+    for (int i=0; i<roi_filepaths.size(); i++) {
+
+        string roi_filepath = roi_filepaths[i];
+        Mat roi_image = imread(roi_filepath);
+
+        vector<Detection> det2s = detector_2.detect(roi_image);
+        detector_2.drawBox(roi_image, det2s);
+
+        string roi_window_name = "roi" + i;
         cv::namedWindow(roi_window_name, CV_WINDOW_AUTOSIZE);
-        cv::imshow(roi_window_name, roi_src_image);
+        cv::imshow(roi_window_name, roi_image);
+
+        // ## crop
+        //保存det roi_chaxiao.
+        vector<Mat> matpool_roi;
+        for(int ind_det=0;ind_det<det2s.size();ind_det++){
+            Mat detMat_chaxiao;
+            roi_image(det2s[ind_det].getRect()).copyTo(detMat_chaxiao);
+            matpool_roi.push_back(detMat_chaxiao);
+        }
+
+        vector<string> roi_chaxiao_filepaths = writeMatPool(matpool_roi, outputPath+"/chaxiao_images");
+
+        for(int i=0; i<roi_chaxiao_filepaths.size(); i++) {
+
+            string roi_chaxiao_filepath = roi_chaxiao_filepaths[i];
+            Mat roi_chaxiao_src_image = imread(roi_chaxiao_filepath);
+
+            string roi_chaxiao_window_name = "chaxiao" + i;
+            cv::namedWindow(roi_chaxiao_window_name, CV_WINDOW_AUTOSIZE);
+            cv::imshow(roi_chaxiao_window_name, roi_chaxiao_src_image);
+        }
+
     }
 
 
