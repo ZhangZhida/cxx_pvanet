@@ -109,10 +109,10 @@ int main(int argc, char* argv[])
 //    string s1_net_pt = "../../models/kaikouxiaomodel_1ststage_1stround/test.prototxt";
 //    std::vector<std::string> s1_classes = { "__background__",
 //                                             "simple","triangle","wings","cross","girder","others" };
-    //string s1_net_model = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
-    string s1_net_model = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
-    //string s1_net_pt = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
-    string s1_net_pt = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
+    string s1_net_model = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
+    //string s1_net_model = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_1st_stage_2nd_round_150000_merge_svd.caffemodel";
+    string s1_net_pt = "../../models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
+    //string s1_net_pt = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_1ststage_2ndround/kaikouxiao_svd.prototxt";
     
     std::vector<std::string> s1_classes = { "__background__",
                                             "simple","triangle","wings","cross","girder","others" };
@@ -128,10 +128,10 @@ int main(int argc, char* argv[])
 //    string s2_net_pt = "../../models/kaikouxiaomodel_2ndstage_1stround/kaikouxiao_svd.prototxt";
 //    std::vector<std::string> s2_classes = { "__background__",
 //                                            "type_chaxiao","type_none"}; // todo: 类别反了
-    //string s2_net_model = "../../models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_2ndstage_2round_100000_merge_svd.caffemodel";
-    string s2_net_model = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_2ndstage_2round_100000_merge_svd.caffemodel";
-    //string s2_net_pt = "../../models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_svd.prototxt";
-    string s2_net_pt = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_svd.prototxt";
+    string s2_net_model = "../../models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_2ndstage_2round_100000_merge_svd.caffemodel";
+    //string s2_net_model = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_2ndstage_2round_100000_merge_svd.caffemodel";
+    string s2_net_pt = "../../models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_svd.prototxt";
+    //string s2_net_pt = "/home/zhida/Documents/Code/cxx_pva/models/kaikouxiaomodel_2ndstage_2ndround/kaikouxiao_svd.prototxt";
     
     std::vector<std::string> s2_classes = { "__background__","type_none","type_chaxiao","type_head"}; // todo: 类别反了
     //初始化

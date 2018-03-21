@@ -75,7 +75,8 @@ int main(int argc, char* argv[])
      * step1: set input_dir
      */
 
-    char* inputdir = "/home/cuizhou/data/VOCdevkit2007/VOC2007/JPEGImages/000010.jpg";
+    //char* inputdir = "/home/cuizhou/data/VOCdevkit2007/VOC2007/JPEGImages/000010.jpg";
+    string inputdir = "/home/zhida/Pictures/test/timg2.jpeg";
 
     // chinese putText
     string font_path = "../../src/OpenCVputTextChinese/STKAITI.TTF";
@@ -84,6 +85,12 @@ int main(int argc, char* argv[])
     //PVANET Parameters
     string net_model = "../../models/all/all_comp.model";
     string net_pt = "../../models/all/all_comp.pt";
+    // std::vector<std::string> classes = { "__background__",
+    //                                          "aeroplane", "bicycle", "bird", "boat",
+    //                                          "bottle", "bus", "car", "cat", "chair",
+    //                                          "cow", "diningtable", "dog", "horse",
+    //                                          "motorbike", "person", "pottedplant",
+    //                                          "sheep", "sofa", "train", "tvmonitor" };
     std::vector<std::string> classes = { "__background__",
                                              "aeroplane", "bicycle", "bird", "boat",
                                              "bottle", "bus", "car", "cat", "chair",
@@ -103,6 +110,8 @@ int main(int argc, char* argv[])
     std::vector<Detection> dets = detector.detect(srcImage);
     detector.drawBox(srcImage, dets);
 
+    cv::namedWindow("result", CV_WINDOW_AUTOSIZE);
+    //cv::setWindowProperty("result", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
     cv::imshow("result", srcImage);
     cv::waitKey(0);
 
