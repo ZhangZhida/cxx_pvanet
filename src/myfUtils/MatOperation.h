@@ -27,6 +27,7 @@ Mat composeGrayVisMat(vector<Mat> matpool);
  */
 vector<string> writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_dir);
 vector<string> writeMatPool(vector<Mat> matpool,int Sig,string filename,string output_dir);
+vector<string> writeMatPool(vector<Mat> matpool,int Sig,string output_dir);
 vector<string> writeMatPool(vector<Mat> matpool,string output_dir);
 
 #endif //MSER_MYMATOPERATION_H

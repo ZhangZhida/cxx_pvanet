@@ -40,10 +40,10 @@ vector<string> writeMatPool(vector<Mat> matpool,string Sig,string filename,strin
           <<"_"
           <<ind
           <<".jpg";
-        string filename = oo.str();
-        filenames.push_back(filename);
+        string file = oo.str();
+        filenames.push_back(file);
 
-        imwrite(filename,matpool[ind]);
+        imwrite(file,matpool[ind]);
     }
 
     return filenames;
@@ -62,10 +62,31 @@ vector<string> writeMatPool(vector<Mat> matpool,int Sig,string filename,string o
           <<"_"
           <<ind
           <<".jpg";
-        string filename = oo.str();
-        filenames.push_back(filename);
+        string file = oo.str();
+        filenames.push_back(file);
 
-        imwrite(filename,matpool[ind]);
+        imwrite(file,matpool[ind]);
+    }
+
+    return filenames;
+}
+
+vector<string> writeMatPool(vector<Mat> matpool,int Sig,string output_dir){
+
+    vector<string> filenames;
+
+    for(int ind=0;ind<matpool.size();ind++){
+        stringstream oo;
+        oo<<output_dir<<"/"
+          <<"_"
+          <<Sig
+          <<"_"
+          <<ind
+          <<".jpg";
+        string file = oo.str();
+        filenames.push_back(file);
+
+        imwrite(file,matpool[ind]);
     }
 
     return filenames;
@@ -80,10 +101,10 @@ vector<string> writeMatPool(vector<Mat> matpool,string output_dir) {
         oo<<output_dir<<"/"
           <<ind
           <<".jpg";
-        string filename = oo.str();
-        filenames.push_back(filename);
+        string file = oo.str();
+        filenames.push_back(file);
 
-        imwrite(filename,matpool[ind]);
+        imwrite(file,matpool[ind]);
     }
 
     return filenames;

@@ -107,14 +107,16 @@ int main(int argc, char* argv[]) {
             matpool_roi.push_back(detMat_chaxiao);
         }
 
-        vector<string> roi_chaxiao_filepaths = writeMatPool(matpool_roi, outputPath+"/chaxiao_images");
+        vector<string> roi_chaxiao_filepaths = writeMatPool(matpool_roi, i, outputPath+"/chaxiao_images");
 
-        for(int i=0; i<roi_chaxiao_filepaths.size(); i++) {
+        for(int j=0; j<roi_chaxiao_filepaths.size(); j++) {
 
-            string roi_chaxiao_filepath = roi_chaxiao_filepaths[i];
+            string roi_chaxiao_filepath = roi_chaxiao_filepaths[j];
             Mat roi_chaxiao_src_image = imread(roi_chaxiao_filepath);
 
-            string roi_chaxiao_window_name = "chaxiao" + i;
+            string roi_chaxiao_window_name = "chaxiao";
+            roi_chaxiao_window_name += i + "_" + j;
+
             cv::namedWindow(roi_chaxiao_window_name, CV_WINDOW_AUTOSIZE);
             cv::imshow(roi_chaxiao_window_name, roi_chaxiao_src_image);
         }
