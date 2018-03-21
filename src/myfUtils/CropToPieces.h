@@ -26,6 +26,7 @@ public:
 
     void setImageName(string imagename);
 
+    //void writeresults(vector<piece>& pool);
     void writeresults(vector<piece>& pool);
 
     //获取每一个切片的左上角点坐标

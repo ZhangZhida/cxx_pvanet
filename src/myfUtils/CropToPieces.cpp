@@ -138,6 +138,7 @@ void CropToPieces::writeresults(vector<piece>& pool){
             piececount++;
         }
     }
+    
 }
 
 void CropToPieces::setImageName(string imagename){

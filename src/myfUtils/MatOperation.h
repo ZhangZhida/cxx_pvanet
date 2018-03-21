@@ -25,8 +25,8 @@ Mat composeGrayVisMat(vector<Mat> matpool);
  * @param filename 原图片名称
  * @param output_dir 保存目标目录
  */
-void writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_dir);
-void writeMatPool(vector<Mat> matpool,int Sig,string filename,string output_dir);
-void writeMatPool(vector<Mat> matpool,string output_dir);
+vector<string> writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_dir);
+vector<string> writeMatPool(vector<Mat> matpool,int Sig,string filename,string output_dir);
+vector<string> writeMatPool(vector<Mat> matpool,string output_dir);
 
 #endif //MSER_MYMATOPERATION_H

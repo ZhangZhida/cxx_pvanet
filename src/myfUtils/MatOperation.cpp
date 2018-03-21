@@ -28,7 +28,30 @@ Mat composeGrayVisMat(vector<Mat> matpool){
 
 
 
-void writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_dir){
+vector<string> writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_dir){
+
+    vector<string> filenames;
+    for(int ind=0;ind<matpool.size();ind++){
+        stringstream oo;
+        oo<<output_dir<<"/"
+          <<filename.substr(0,filename.length()-4)
+          <<"_"
+          <<Sig
+          <<"_"
+          <<ind
+          <<".jpg";
+        string filename = oo.str();
+        filenames.push_back(filename);
+
+        imwrite(filename,matpool[ind]);
+    }
+
+    return filenames;
+}
+
+vector<string> writeMatPool(vector<Mat> matpool,int Sig,string filename,string output_dir){
+
+    vector<string> filenames;
 
     for(int ind=0;ind<matpool.size();ind++){
         stringstream oo;
@@ -39,31 +62,29 @@ void writeMatPool(vector<Mat> matpool,string Sig,string filename,string output_d
           <<"_"
           <<ind
           <<".jpg";
-        imwrite(oo.str(),matpool[ind]);
+        string filename = oo.str();
+        filenames.push_back(filename);
+
+        imwrite(filename,matpool[ind]);
     }
+
+    return filenames;
 }
 
-void writeMatPool(vector<Mat> matpool,int Sig,string filename,string output_dir){
-
-    for(int ind=0;ind<matpool.size();ind++){
-        stringstream oo;
-        oo<<output_dir<<"/"
-          <<filename.substr(0,filename.length()-4)
-          <<"_"
-          <<Sig
-          <<"_"
-          <<ind
-          <<".jpg";
-        imwrite(oo.str(),matpool[ind]);
-    }
-}
-
-void writeMatPool(vector<Mat> matpool,string output_dir) {
+vector<string> writeMatPool(vector<Mat> matpool,string output_dir) {
+    
+    vector<string> filenames;
+    
     for (int ind = 0; ind < matpool.size(); ind++) {
         stringstream oo;
         oo<<output_dir<<"/"
           <<ind
           <<".jpg";
-        imwrite(oo.str(),matpool[ind]);
+        string filename = oo.str();
+        filenames.push_back(filename);
+
+        imwrite(filename,matpool[ind]);
     }
+
+    return filenames;
 }
